@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="mouse">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+
+	<title>Welcome to Buzzbee!</title>
+
+	<!-- Behavioral Meta Data -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Core Meta Data -->
+	<meta name="author" content="Matthew Wagerfield">
+	<meta name="description" content="Simple, lightweight Parallax Engine that reacts to the orientation of a smart device">
+	<meta name="keywords" content="parallax,javascript,jquery,zepto,plugin">
+
+	<!-- Open Graph Meta Data -->
+	<meta property="og:description" content="Simple, lightweight Parallax Engine that reacts to the orientation of a smart device">
+	<meta property="og:image" content="http://wagerfield.github.io/parallax/assets/images/thumbnail.png">
+	<meta property="og:site_name" content="parallax.js">
+	<meta property="og:title" content="parallax.js">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://wagerfield.github.io/parallax/index.html">
+
+	<!-- Humans -->
+	<link rel="author" href="http://matthew.wagerfield.com/parallax/humans.txt">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="../static/styles.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://matthew.wagerfield.com/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="http://matthew.wagerfield.com/favicon.png" type="image/png">
+	<link rel="shortcut icon" href="http://wagerfield.github.io/parallax/favicon.png" type="image/png">
+
+</head>
+<body>
+
+
+	<div id="container" class="wrapper">
+		<ul data-mode="cursor" style="width: 1536px; height: 340px; transform: translate3d(0px, 0px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" id="scene" class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15">
+			<li style="position: relative; display: block; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.00"></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-6.70067px, 0.79354px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.10"><div class="background"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-6.70067px, 0.79354px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.10"><div class="light orange b phase-4"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-6.70067px, 0.79354px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.10"><div class="light purple c phase-5"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-6.70067px, 0.79354px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.10"><div class="light orange d phase-3"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-10.051px, 1.19031px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.15">
+				<ul class="rope depth-10">
+					<li><img src="../static/rope.png" alt="Rope"></li>
+					<li class="hanger position-2">
+						<div class="board cloud-2 swing-1"></div>
+					</li>
+					<li class="hanger position-4">
+						<div class="board cloud-1 swing-3"></div>
+					</li>
+					<li class="hanger position-8">
+						<div class="board birds swing-5"></div>
+					</li>
+				</ul>
+			</li>
+			<li data-depth="0.20"><h1 class="title">Welcome to<br><em><a href="{{ url_for('hello') }}">Buzzbee!</a></em></h1><br></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-20.102px, 2.38062px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.30">
+				<ul class="rope depth-30">
+					<li><img src="../static/rope.png" alt="Rope"></li>
+					<li class="hanger position-1">
+						<div class="board cloud-1 swing-3"></div>
+					</li>
+					<li class="hanger position-5">
+						<div class="board cloud-4 swing-1"></div>
+					</li>
+				</ul>
+			</li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-20.102px, 2.38062px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.30"><div class="wave paint depth-30"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-26.8027px, 3.17416px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.40"><div class="wave plain depth-40"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-33.5034px, 3.9677px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.50"><div class="wave paint depth-50"></div></li>
+			
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-40.204px, 4.76124px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.60">
+				<ul class="rope depth-60">
+					<li><img src="../static/rope.png" alt="Rope"></li>
+					<li class="hanger position-3">
+						<div class="board birds swing-5"></div>
+					</li>
+					<li class="hanger position-6">
+						<div class="board cloud-2 swing-2"></div>
+					</li>
+					<li class="hanger position-8">
+						<div class="board cloud-3 swing-4"></div>
+					</li>
+				</ul>
+			</li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-40.204px, 4.76124px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.60"><div class="wave plain depth-60"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-53.6054px, 6.34832px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="0.80"><div class="wave plain depth-80"></div></li>
+			<li style="position: absolute; display: block; left: 0px; top: 0px; transform: translate3d(-67.0067px, 7.9354px, 0px); transform-style: preserve-3d; backface-visibility: hidden;" class="layer" data-depth="1.00"><div class="wave paint depth-100"></div></li>
+		</ul>
+		<section id="about" class="wrapper about hide accelerate">
+			<div class="cell accelerate">
+				<div class="cables center accelerate">
+					<div class="panel accelerate" id="logreg">
+						<div id="log">
+							<header>
+							<h1>Log In!<br><em>To get started!</em></h1>
+							</header>
+						<form id="login">
+							<br>
+							<input type="text" id="email" placeholder="Your E-Mail" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br>
+							<br>
+							<input type="password" id="password" placeholder="Your Password" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br>
+							<input type="submit" value="Sign in"><br><br>
+						</form>
+						<br>
+						<p> New User? <em onclick="register()" style="cursor:pointer">Register Here</em></p>
+						<h2>Or</h2>
+						<ul class="links">
+							<li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li>
+							<li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li>
+						</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<button id="toggle" class="toggle i">
+			<div class="cross">
+				<div class="x"></div>
+				<div class="y"></div>
+			</div>
+		</button>
+	</div>
+	<!-- Scripts -->
+	<script src="../static/libraries.js"></script>
+	<script src="../static/jquery.js"></script>
+	<script>
+	function register(){
+		var x = document.getElementById('log');
+		x.parentNode.removeChild(x)
+		
+		var register = document.createElement('form');
+		register.innerHTML = '<div id="reg"><header><h1>Sign Up!</h1></header><form id="login"><br><input type="text" id="name" placeholder="Your Full Name" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="text" id="email" placeholder="Your E-Mail" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="password" placeholder="Your Password" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="password" placeholder="Your Password Again" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="submit" value="Sign Up!"><br><br></form><p> Already a User? <em onclick="login()" style="cursor:pointer">Login Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
+		document.getElementById('logreg').appendChild(register);
+	}
+	function login(){
+		var x = document.getElementById('reg');
+		x.parentNode.removeChild(x)
+		
+		var login = document.createElement('form');
+		login.innerHTML = '<div id="log"><header><h1>Log In!<br><em>To get started!</em></h1></header><form id="login"><br><input type="text" id="email" placeholder="Your E-Mail" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><br><input type="password" id="password" placeholder="Your Password" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="submit" value="Sign in"><br><br></form><br><p> New User? <em onclick="register()" style="cursor:pointer">Register Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
+		document.getElementById('logreg').appendChild(login);
+	}
+	</script>
+	<script>
+
+	// jQuery Selections
+	var $html = $('html'),
+			$container = $('#container'),
+			$prompt = $('#prompt'),
+			$toggle = $('#toggle'),
+			$about = $('#about'),
+			$scene = $('#scene');
+
+	// Hide browser menu.
+	(function() {
+		setTimeout(function(){window.scrollTo(0,0);},0);
+	})();
+
+	// Setup FastClick.
+	FastClick.attach(document.body);
+
+	// Add touch functionality.
+	if (Hammer.HAS_TOUCHEVENTS) {
+		$container.hammer({drag_lock_to_axis: true});
+		_.tap($html, 'a,button,[data-tap]');
+	}
+
+	// Add touch or mouse class to html element.
+	$html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
+
+	// Resize handler.
+	(resize = function() {
+		$scene[0].style.width = window.innerWidth + 'px';
+		$scene[0].style.height = window.innerHeight + 'px';
+		if (!$prompt.hasClass('hide')) {
+			if (window.innerWidth < 600) {
+				$toggle.addClass('hide');
+			} else {
+				$toggle.removeClass('hide');
+			}
+		}
+	})();
+
+	// Attach window listeners.
+	window.onresize = _.debounce(resize, 200);
+	window.onscroll = _.debounce(resize, 200);
+
+	function showDetails() {
+		$about.removeClass('hide');
+		$toggle.removeClass('i');
+	}
+
+	function hideDetails() {
+		$about.addClass('hide');
+		$toggle.addClass('i');
+	}
+
+	// Listen for toggle click event.
+	$toggle.on('click', function(event) {
+		$toggle.hasClass('i') ? showDetails() : hideDetails();
+	});
+
+	// Pretty simple huh?
+	$scene.parallax();
+
+	// Check for orientation support.
+	setTimeout(function() {
+		if ($scene.data('mode') === 'cursor') {
+			$prompt.removeClass('hide');
+			if (window.innerWidth < 600) $toggle.addClass('hide');
+			$prompt.on('click', function(event) {
+				$prompt.addClass('hide');
+				if (window.innerWidth < 600) {
+					setTimeout(function() {
+						$toggle.removeClass('hide');
+					},1200);
+				}
+			});
+		}
+	},1000);
+	</script>
+</body>
+</html>
