@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block container %}
+<p> Hello world </p>
+{{ username }}
+{{ loggedIn }}
+{% for entry in entries %}
+<p>{{ entry }}</p>
+{% endfor %}
+{% endblock %}

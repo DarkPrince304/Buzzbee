@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title> Hello {{ username }}!</title>
+		<link rel="stylesheet" type="text/css" href="../static/default.css" />
+		<link rel="stylesheet" type="text/css" href="../static/component.css" />
+		<script src="../static/modernizr.custom.js"></script>
+		<style>
+		body {
+			background: -moz-linear-gradient(top, #523e7c 0%, #8570a8 65%, #524e91 97%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#523e7c), color-stop(65%,#8570a8), color-stop(97%,#524e91)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* IE10+ */
+			background: linear-gradient(to bottom, #523e7c 0%,#8570a8 65%,#524e91 97%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#523e7c', endColorstr='#524e91',GradientType=0 );/* IE6-9 fallback on horizontal gradient */
+			background-size: 1800px 1000px;
+	}
+		</style>
+{% endblock %}
+{% block body %}
+	<body class="cbp-spmenu-push">
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<h3>Menu</h3>
+			<a href="{{ url_for('news') }}">Home</a>
+			<a href="{{ url_for('profile') }}">{{ username }}</a>
+			<a href="{{ url_for('uploadpic') }}">Upload a photo</a>
+			<a href="#">Upload a video</a>
+			<a href="#">Upload a CSS</a>
+			<a href="#">About</a>
+			<a href="{{ url_for('logout') }}">Logout</a>
+		</nav>
+		<div class="container">
+			<div class="main">
+				<section>
+					<button id="showLeft">Menu</button>
+				</section>
+			</div>
+
+			{% block container %}
+			{% endblock %}
+		</div>
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<script src="../static/classie.js"></script>
+		<script>
+			var	menuRight = document.getElementById( 'cbp-spmenu-s1' ),
+				showRight = document.getElementById( 'showLeft' )
+				body = document.body;
+
+			showLeft.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( menuRight, 'cbp-spmenu-open' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				disableOther( 'showLeft' );
+			};
+		</script>
+	</body>
+{% endblock %}

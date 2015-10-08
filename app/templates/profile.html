@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block head %}
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/default.css" />
+	<link rel="stylesheet" type="text/css" href="../static/component.css" />
+		<script src="../static/modernizr.custom.js"></script>
+		<style>
+		body {
+			background: -moz-linear-gradient(top, #523e7c 0%, #8570a8 65%, #524e91 97%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#523e7c), color-stop(65%,#8570a8), color-stop(97%,#524e91)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* IE10+ */
+			background: linear-gradient(to bottom, #523e7c 0%,#8570a8 65%,#524e91 97%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#523e7c', endColorstr='#524e91',GradientType=0 );/* IE6-9 fallback on horizontal gradient */
+			background-size: 1800px 1000px;
+	}
+	</style>
+{% endblock %}
+{% block container %}
+    <header id="myCarousel" class="carousel slide">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">{{ username }}'s Uploads</h2>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+    </div>
+    <!-- /.container -->
+
+<!-- jQuery library -->
+<script src="../static/jquery.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+{% endblock %}

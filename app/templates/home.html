@@ -34,7 +34,14 @@
 	<link rel="shortcut icon" href="http://matthew.wagerfield.com/favicon.ico" type="image/x-icon">
 	<link rel="shortcut icon" href="http://matthew.wagerfield.com/favicon.png" type="image/png">
 	<link rel="shortcut icon" href="http://wagerfield.github.io/parallax/favicon.png" type="image/png">
-
+	<style>
+	#email,#username,#password,#confirm {
+		width: 400px;
+		height: 50px;
+		border-radius: 5px;
+		box-shadow: 0px 0px 8px brown inset;
+	}
+	</style>
 </head>
 <body>
 
@@ -102,12 +109,14 @@
 							<header>
 							<h1>Log In!<br><em>To get started!</em></h1>
 							</header>
-						<form id="login">
+						<form id="login" method="post" action="/login/">
 							<br>
-							<input type="text" id="email" placeholder="Your E-Mail" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br>
-							<br>
-							<input type="password" id="password" placeholder="Your Password" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br>
+							{{ formLog.username(id="username", placeholder="Your Username") }}
+							<br><br>
+							{{ formLog.password(id="password", placeholder="Your password") }}
+							<br><br>
 							<input type="submit" value="Sign in"><br><br>
+							{{ errorLog }}
 						</form>
 						<br>
 						<p> New User? <em onclick="register()" style="cursor:pointer">Register Here</em></p>
@@ -136,16 +145,17 @@
 		var x = document.getElementById('log');
 		x.parentNode.removeChild(x)
 		
-		var register = document.createElement('form');
-		register.innerHTML = '<div id="reg"><header><h1>Sign Up!</h1></header><form id="login"><br><input type="text" id="name" placeholder="Your Full Name" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="text" id="email" placeholder="Your E-Mail" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="password" placeholder="Your Password" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="password" placeholder="Your Password Again" style="width:400px;height:50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="submit" value="Sign Up!"><br><br></form><p> Already a User? <em onclick="login()" style="cursor:pointer">Login Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
+		var register = document.createElement('div');
+		register.innerHTML = '<div id="reg"><header><h1>Sign Up!</h1></header><form id="register" method=post action="/register/"><br>{{formReg.username(id="username", placeholder = "Your Username")}}<br><br>{{formReg.email(id="email", placeholder = "Your Email here")}}<br><br>{{formReg.password(id="password", placeholder = "Your Password")}}<br><br>{{formReg.confirm(id="confirm", placeholder = "Confirm password again")}}<br><br><input type="submit" value="Sign Up!"><br><br>{{ errorReg }}</form><p> Already a User? <em onclick="login()" style="cursor:pointer">Login Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
 		document.getElementById('logreg').appendChild(register);
+		console.log(document.getElementById('reg').children[2]);
 	}
 	function login(){
 		var x = document.getElementById('reg');
 		x.parentNode.removeChild(x)
 		
-		var login = document.createElement('form');
-		login.innerHTML = '<div id="log"><header><h1>Log In!<br><em>To get started!</em></h1></header><form id="login"><br><input type="text" id="email" placeholder="Your E-Mail" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><br><input type="password" id="password" placeholder="Your Password" style="width: 400px;height: 50px;border-radius: 5px;box-shadow: 0px 0px 8px brown inset"><br><br><input type="submit" value="Sign in"><br><br></form><br><p> New User? <em onclick="register()" style="cursor:pointer">Register Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
+		var login = document.createElement('div');
+		login.innerHTML = '<div id="log"><header><h1>Log In!<br><em>To get started!</em></h1></header><form id="login" method="post" action="/login/"><br><input type="text" id="email" placeholder="Your E-Mail"><br><br><br><input type="password" id="password" placeholder="Your Password"><br><br><input type="submit" value="Sign in"><br><br>{{ errorLog }}</form><br><p> New User? <em onclick="register()" style="cursor:pointer">Register Here</em></p><h2>Or</h2><ul class="links"><li><a href="https://github.com/wagerfield/parallax/archive/master.zip">Login with Facebook</a></li><li><a target="_blank" href="https://github.com/wagerfield/parallax">Login with Twitter</a></li></ul></div>';
 		document.getElementById('logreg').appendChild(login);
 	}
 	</script>
