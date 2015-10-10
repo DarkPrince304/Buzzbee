@@ -1,9 +1,61 @@
 {% extends "base.html" %}
+{% block head %}
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/default.css" />
+	<link rel="stylesheet" type="text/css" href="../static/component.css" />
+		<script src="../static/modernizr.custom.js"></script>
+		<style>
+		body {
+			background: #c485f7; /* Old browsers */
+			background: -moz-radial-gradient(center, ellipse cover, #c485f7 10%, #c485f7 10%, #9653a0 66%, #7e20a3 88%, #7e20a3 88%) no-repeat fixed; /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(10%,#c485f7), color-stop(10%,#c485f7), color-stop(66%,#9653a0), color-stop(88%,#7e20a3), color-stop(88%,#7e20a3)) no-repeat fixed; /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover, #c485f7 10%,#c485f7 10%,#9653a0 66%,#7e20a3 88%,#7e20a3 88%) no-repeat fixed; /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover, #c485f7 10%,#c485f7 10%,#9653a0 66%,#7e20a3 88%,#7e20a3 88%) no-repeat fixed; /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover, #c485f7 10%,#c485f7 10%,#9653a0 66%,#7e20a3 88%,#7e20a3 88%) no-repeat fixed no-repeat fixed; /* IE10+ */
+			background: radial-gradient(ellipse at center, #c485f7 10%,#c485f7 10%,#9653a0 66%,#7e20a3 88%,#7e20a3 88%) no-repeat fixed; /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c485f7', endColorstr='#7e20a3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+			background-size: 1960px 1000px;
+	}
+	</style>
+{% endblock %}
 {% block container %}
-<p> Hello world </p>
-{{ username }}
-{{ loggedIn }}
-{% for entry in entries %}
-<p>{{ entry }}</p>
+<h1 align="center"> Buzz Feed </h1>
+{% for user,desc,link in usersdescslinks %}
+<div id="news" style="border: 1px solid white">
+<div class="jumbotron" id="post" data-sr="roll -90deg, enter top, over 1s, ease-in 20%">
+<img src = "{{ link }}">
+<br><p> {{ desc }} </p><br><sup> Uploaded by: {{ user }}</sup>
+</div>
+<br>
+<br>
+</div>
+<style>
+div{
+	padding-top: 20px;
+}
+#post {
+	margin-left: 23%;
+	width: 615px;
+	text-align:center;
+	background: #7db9e8; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #7db9e8 35%, #2989d8 71%, #491d91 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(35%,#7db9e8), color-stop(71%,#2989d8), color-stop(100%,#491d91)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover, #7db9e8 35%,#2989d8 71%,#491d91 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover, #7db9e8 35%,#2989d8 71%,#491d91 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover, #7db9e8 35%,#2989d8 71%,#491d91 100%); /* IE10+ */
+background: radial-gradient(ellipse at center, #7db9e8 35%,#2989d8 71%,#491d91 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#491d91',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+[data-sr] {
+        visibility: hidden;
+      }
+</style>
+<script>
+window.sr = new scrollReveal();
+</script>
+<script src="../static/scrollReveal.min.js"></script>
+<script src="../static/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 {% endfor %}
 {% endblock %}

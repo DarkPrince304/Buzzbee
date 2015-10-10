@@ -9,14 +9,12 @@
 		<script src="../static/modernizr.custom.js"></script>
 		<style>
 		body {
-			background: -moz-linear-gradient(top, #523e7c 0%, #8570a8 65%, #524e91 97%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#523e7c), color-stop(65%,#8570a8), color-stop(97%,#524e91)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%); /* IE10+ */
-			background: linear-gradient(to bottom, #523e7c 0%,#8570a8 65%,#524e91 97%); /* W3C */
+			background: -moz-linear-gradient(top, #523e7c 0%, #8570a8 65%, #524e91 97%) no-repeat fixed; /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#523e7c), color-stop(65%,#8570a8), color-stop(97%,#524e91)) no-repeat fixed; /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%) no-repeat fixed; /* Chrome10+,Safari5.1+ */
+			background: -ms-linear-gradient(top, #523e7c 0%,#8570a8 65%,#524e91 97%) no-repeat fixed; /* IE10+ */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#523e7c', endColorstr='#524e91',GradientType=0 );/* IE6-9 fallback on horizontal gradient */
-			background-size: 1800px 1000px;
+			background-size: 1960px 1000px;
 	}
 		</style>
 {% endblock %}
@@ -35,7 +33,7 @@
 		<div class="container">
 			<div class="main">
 				<section>
-					<button id="showLeft">Menu</button>
+					<button id="showLeft" style="position:fixed; width: 100px">Menu</button>
 				</section>
 			</div>
 

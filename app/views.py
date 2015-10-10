@@ -53,13 +53,15 @@ def register():
 			else:
 				c.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)",
 				(thwart(username),thwart(password),thwart(email)))
+				uid = c.execute("SELECT uid FROM users WHERE username = (%s)",(thwart(username)))
 				conn.commit()
 				c.close()
 				conn.close()
 				gc.collect()
+				session["uid"]=uid
 				session["logged_in"] = True
 				session["username"] = username
-				return render_template("news.html", username = session["username"], loggedIn = session["logged_in"])
+				return redirect(url_for("news"))
 	except Exception as e:
 		return str(e)
 	
@@ -71,16 +73,19 @@ def login():
 		formLog = LoginForm(request.form)
 		formReg = RegistrationForm(request.form)
 		if request.method == "POST":
-			print "Hello"
+			#print "Hello"
 			username = formLog.username.data
 			password = formLog.password.data
-			print username, password
+			#print username, password
 			c, conn = connection()
 			data = c.execute("SELECT * FROM users WHERE username = (%s)",(thwart(username)))
 			data = c.fetchone()[2]
-			print "hello",data
-			print "Hello"
+			uid = c.execute("SELECT * FROM users WHERE username = (%s)",(thwart(username)))
+			uid = c.fetchone()[0]
+			#print "hello",data, uid
+			#print "Hello"
 			if sha256_crypt.verify(password, data):
+				session['uid'] = uid
 				session['logged_in'] = True
 				session['username'] = username
 				gc.collect()
@@ -101,12 +106,27 @@ def base():
 def news():
 	try:
 		c, conn = connection()
-		data = c.execute("SELECT username FROM users")
-		data = c.fetchall()
+		data1 = c.execute("SELECT username FROM photos")
+		data1 = c.fetchall()
+		data2 = c.execute("SELECT description FROM photos")
+		data2 = c.fetchall()
+		data3 = c.execute("SELECT link FROM photos")
+		data3 = c.fetchall()
 		users = []
-		for i in data:
+		descs = []
+		links = []
+		for i in data1:
 			users.append(str(i).strip("(),'"))
-		return render_template("news.html", entries = users, username = session["username"], loggedIn = session["logged_in"])
+		for i in data2:
+			descs.append(str(i).strip("(),'"))
+		for i in data3:
+			links.append(str(i).strip("(),'"))
+		users.reverse()
+		descs.reverse()
+		links.reverse()
+		print users
+		print descs
+		return render_template("news.html", usersdescslinks = zip(users,descs,links), username = session["username"], loggedIn = session["logged_in"])
 	except Exception as e:
 		return str(e)
 
@@ -118,11 +138,43 @@ def logout():
 
 @app.route('/profile/')
 def profile():
-	return render_template("profile.html", username = session["username"])
+	print session["uid"]
+	c, conn = connection()
+	data1 = c.execute("SELECT link FROM photos WHERE uid = (%s)",thwart(str(session["uid"])))
+	data1 = c.fetchall()
+	data2 = c.execute("SELECT description FROM photos WHERE uid = (%s)",thwart(str(session["uid"])))
+	data2 = c.fetchall()
+	pics = []
+	desc = []
+	print data1,data2
+	for i in data1:
+		pics.append(str(i).strip("(),'"))
+	for i in data2:
+		desc.append(str(i).strip("(),'"))
+	pics.reverse()
+	desc.reverse()
+	print desc
+	return render_template("profile.html", username = session["username"], pics = zip(pics,desc))
 
 @app.route('/uploadpic/')
 def uploadpic():
 	return render_template("uploadpic.html", username = session["username"], loggedIn = session["logged_in"])
+
+@app.route('/save/', methods=["GET", "POST"])
+def save():
+	uid = session["uid"]
+	#print "hello",uid
+	link = request.json["link"]
+	description = request.json["description"]
+	likes = 0
+	username = session["username"]
+	c, conn = connection()
+	data = c.execute("INSERT INTO photos (uid, link, description, likes, username) VALUES (%s, %s, %s, %s, %s)",(thwart(str(uid)),thwart(link),thwart(description), thwart(str(likes)), thwart(username)))
+	conn.commit()
+	c.close()
+	conn.close()
+	gc.collect()
+	return url_for('news')
 
 @app.route('/hello/', methods = ["GET", "POST"])
 def hello():

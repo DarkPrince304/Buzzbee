@@ -19,12 +19,19 @@
 	</style>
 {% endblock %}
 {% block container %}
+    <script type="text/javascript">
+            var data;
+            function profilePic(){
+                alert(data)
+            }
+            </script>
+
     <header id="myCarousel" class="carousel slide">
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('');"></div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
@@ -51,36 +58,32 @@
             <div class="col-lg-12">
                 <h2 class="page-header">{{ username }}'s Uploads</h2>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
+            {% for link,desc in pics %}
+            <div class="col-md-4 col-sm-6" data-toggle="modal" data-target="#myModal" onclick="$(#myModal).modal('show')" style="cursor:pointer" data-sr="spin 90deg, roll 90deg, enter top, over 1s, hustle 20%">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ link }}" alt="{{ desc }}" style="height:320px;width:350px">
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Make this your profile picture?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" onclick="data = {{ link }}; profilePic();">Yes</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                  </div>
+                  
+                </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="../static/eiffel.png" alt="">
-                </a>
-            </div>
+            <script>
+            window.sr = new scrollReveal();
+            </script>
+            <script src="../static/scrollReveal.min.js"></script>
+            {% endfor %}
         </div>
         <!-- /.row -->
 
@@ -89,7 +92,7 @@
     <!-- /.container -->
 
 <!-- jQuery library -->
-<script src="../static/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

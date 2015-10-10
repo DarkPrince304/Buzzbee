@@ -110,6 +110,7 @@ h1 b{
 #filterContainer{
 	width: 650px;
 	margin: 50px auto 90px;
+	top: 200px;
 	position: relative;
 	display:none;
 }
@@ -241,10 +242,25 @@ h1 b{
 	overflow: hidden;
 	width: 206px;
 	height: 153px;
-	background: url('download_image.jpg');
+	background: url('download_image.jpg') no-repeat;
 }
 
-
+.saveImage {
+	position: absolute;
+	display: none;
+	overflow: hidden;
+	width: 206px;
+	height: 153px;
+	top: 400px;
+	right: 438px;
+	background: url('save.jpg') no-repeat;
+}
+#description{
+	display: none;
+	overflow: scroll;
+	max-width:450px;
+	max-height:100px;
+}
 /*----------------------------
 	The Demo Footer
 -----------------------------*/

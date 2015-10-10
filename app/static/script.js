@@ -22,7 +22,11 @@ $(function() {
 		photo = $('#photo'),
 		originalCanvas = null,
 		filters = $('#filters li a'),
-		filterContainer = $('#filterContainer');
+		filterContainer = $('#filterContainer'),
+		fake,
+		data = {},
+		saveImage = $("#save"),
+		description = $("#description");
 
 	// Use the fileReader plugin to listen for
 	// file drag and drop on the photo div:
@@ -106,6 +110,7 @@ $(function() {
 
 					// Trigger the default "normal" filter
 					filters.first().click();
+					description.fadeIn();
 				});
 
 				// Set the src of the img, which will
@@ -164,6 +169,7 @@ $(function() {
 				this.render();
 				this.toBase64(type="jpeg")
 				// Show the download button
+				fake = clone[0];
 				showDownload(clone[0]);
 			}
 			else{
@@ -184,6 +190,21 @@ $(function() {
 
 	});
 	var downloadImage = $('a.downloadImage');
+	var save = $('#save')
+	save.click(function(){
+	//console.log(fake.toDataURL("image/jpeg", 0.2))
+	data["link"] = fake.toDataURL("image/jpeg",0.2)
+	data["description"] = description.val()
+	$.ajax({
+	    type : "POST",
+	    url : "/save/",
+	    data: JSON.stringify(data, null , '\t'),
+	    contentType: 'application/json;charset=UTF-8',
+	    success: function(result) {
+	        window.location.href = result;
+		    }
+		});
+	})
 
 	function showDownload(canvas){
 
@@ -197,7 +218,7 @@ $(function() {
 			console.log("Hello"+url)
 			
 		}).fadeIn();
-
+		saveImage.fadeIn();
 	}
 
 	function hideDownload(){
